@@ -9,10 +9,10 @@ const FloatingContactIcons = () => {
       {/* Container for floating icons */}
       <div className="relative">
         {/* Phone Icon - Top */}
-        <div className="mb-2">
-          <div className="bg-[#005D89] p-2 rounded-lg shadow-lg transition-all duration-100 hover:scale-110 cursor-pointer">
+        <div className="mb-3">
+          <div className="bg-[#005D89] p-3 rounded-lg shadow-lg transition-all duration-100 hover:scale-110 cursor-pointer">
             <svg 
-              className="w-4 h-4 text-white animate-surprise"
+              className="w-6 h-6 text-white animate-surprise"
               fill="none" 
               stroke="currentColor" 
               viewBox="0 0 24 24"
@@ -29,13 +29,13 @@ const FloatingContactIcons = () => {
 
         {/* WhatsApp Icon - Middle with small gap */}
         <div 
-          className="mb-32 relative"
+          className="mb-64 relative"
           onMouseEnter={() => setIsWhatsappHovered(true)}
           onMouseLeave={() => setIsWhatsappHovered(false)}
         >
-          <div className="bg-[#005D89] p-2 rounded-lg shadow-lg transition-all duration-300 hover:scale-110 cursor-pointer">
+          <div className="bg-[#005D89] p-3 rounded-lg shadow-lg transition-all duration-300 hover:scale-110 cursor-pointer">
             <svg 
-              className="w-4 h-4 text-white animate-surprise-delayed"
+              className="w-6 h-6 text-white animate-surprise-delayed"
               fill="currentColor"
               viewBox="0 0 24 24"
             >
@@ -68,7 +68,7 @@ const FloatingContactIcons = () => {
 
         {/* Custom Icon - Bottom (with large gap) */}
         <div>
-            <div className="w-8 h-8 text-white font-bold flex items-center justify-center animate-surprise-delayed-2">
+            <div className="w-12 h-12 text-white font-bold flex items-center justify-center animate-surprise-delayed-2">
               <img src={companyLogoPath} className="w-full h-full object-contain"></img>
             </div>
           </div>
