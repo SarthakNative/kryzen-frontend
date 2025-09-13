@@ -1,12 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight, Play, X } from 'lucide-react';
 
 const VideoCarousel = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedVideo, setSelectedVideo] = useState(null);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+  const [translateX, setTranslateX] = useState(0);
 
   // Replace these with actual YouTube video IDs
-  const videos = [
+  const initialVideos = [
     {
       id: 'dQw4w9WgXcQ',
       title: 'Leading Real Estate App Development',
@@ -39,31 +40,60 @@ const VideoCarousel = () => {
     }
   ];
 
+  const [videos, setVideos] = useState(initialVideos);
+
   const handlePrevious = () => {
-    setCurrentIndex((prev) => (prev - 1 + videos.length) % videos.length);
+    if (isTransitioning) return;
+    
+    setIsTransitioning(true);
+    setTranslateX(320);
+    
+    setTimeout(() => {
+      setVideos(prev => {
+        const newVideos = [...prev];
+        const lastItem = newVideos.pop();
+        newVideos.unshift(lastItem);
+        return newVideos;
+      });
+      setTranslateX(0);
+      setIsTransitioning(false);
+    }, 500);
   };
 
   const handleNext = () => {
-    setCurrentIndex((prev) => (prev + 1) % videos.length);
+    if (isTransitioning) return;
+    
+    setIsTransitioning(true);
+    setTranslateX(-320);
+    
+    setTimeout(() => {
+      setVideos(prev => {
+        const newVideos = [...prev];
+        const firstItem = newVideos.shift();
+        newVideos.push(firstItem);
+        return newVideos;
+      });
+      setTranslateX(0);
+      setIsTransitioning(false);
+    }, 500);
   };
 
+  // Get visible videos (show 5 at a time for smooth infinite effect)
   const getVisibleVideos = () => {
-    const visible = [];
-    for (let i = -1; i <= 3; i++) {
-      const index = (currentIndex + i + videos.length) % videos.length;
-      visible.push({ ...videos[index], position: i });
-    }
-    return visible;
+    // For infinite effect, we'll show the last video, all current videos, and the first video again
+    const lastVideo = videos[videos.length - 1];
+    const firstVideo = videos[0];
+    return [lastVideo, ...videos, firstVideo];
   };
 
   return (
     <>
-      <div className="bg-[#005d89] min-h-screen py-8 px-4 relative overflow-hidden">
+      <div className="bg-[#005d89] min-h-screen py-4 px-4 relative overflow-hidden">
 
         <div className="max-w-7xl mx-auto">
           {/* Header */}
           <div className="text-center mb-12">
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
+            <h1 className="text-2xl md:text-3xl font-bold text-white mb-4">
               Unveiling Our Innovative Solution
             </h1>
             <p className="text-lg text-white/90 max-w-4xl mx-auto">
@@ -72,67 +102,78 @@ const VideoCarousel = () => {
             </p>
           </div>
 
-          {/* Carousel */}
+          {/* Carousel Container */}
           <div className="relative">
-            <div className="flex items-center justify-center gap-4 overflow-hidden">
-              {getVisibleVideos().map((video, index) => (
-                <div
-                  key={`${video.id}-${index}`}
-                  className={`
-                    transition-all duration-300 cursor-pointer
-                    ${video.position === -1 || video.position === 3 ? 'w-1/2 opacity-50 scale-95' : 'w-full'}
-                    ${video.position === -1 ? '-mr-1/4' : ''}
-                    ${video.position === 3 ? '-ml-1/4' : ''}
-                  `}
-                  style={{
-                    maxWidth: video.position === -1 || video.position === 3 ? '200px' : '350px'
-                  }}
-                  onClick={() => setSelectedVideo(video)}
-                >
-                  <div className="relative bg-white rounded-lg overflow-hidden shadow-xl">
-                    {/* Sapphire Logo */}
-                    <div className="absolute top-2 left-2 z-10 bg-black/50 px-2 py-1 rounded">
-                      <span className="text-white text-xs font-bold">Sapphire</span>
-                    </div>
+            <div 
+              className="overflow-hidden mx-auto" 
+              style={{ 
+                maxWidth: '1440px' // Width for 3 cards (960px) minus half card on each side (160px each)
+              }}
+            >
+              <div 
+                className={`flex ${isTransitioning ? 'transition-transform duration-500 ease-in-out' : ''}`}
+                style={{
+                  transform: `translateX(${translateX - 160}px)` // Offset by half a card width to show partial cards
+                }}
+              >
+                {getVisibleVideos().map((video, index) => (
+                  <div
+                    key={`${video.title}-${index}`}
+                    className="flex-shrink-0 px-2"
+                    style={{ width: '320px' }}
+                  >
+                    <div 
+                      className="cursor-pointer"
+                      onClick={() => setSelectedVideo(video)}
+                    >
+                      <div className="relative bg-white rounded-lg overflow-hidden shadow-xl">
+                        {/* Sapphire Logo */}
+                        <div className="absolute top-2 right-2 z-10 bg-black/50 px-2 py-1 rounded">
+                          <span className="text-white text-xs font-bold">Sapphire</span>
+                        </div>
 
-                    {/* Video Thumbnail */}
-                    <div className="relative aspect-video bg-gray-900">
-                      <img
-                        src={`https://img.youtube.com/vi/${video.id}/maxresdefault.jpg`}
-                        alt={video.title}
-                        className="w-full h-full object-cover"
-                      />
-                      
-                      {/* Play Button */}
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform">
-                          <Play className="w-8 h-8 text-gray-900 ml-1" fill="currentColor" />
+                        {/* Video Thumbnail */}
+                        <div className="relative aspect-video bg-gray-900">
+                          <img
+                            src={`https://img.youtube.com/vi/${video.id}/maxresdefault.jpg`}
+                            alt={video.title}
+                            className="w-full h-full object-cover"
+                          />
+                          
+                          {/* Play Button */}
+                          <div className="absolute inset-0 flex items-center justify-center">
+                            <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform">
+                              <Play className="w-8 h-8 text-gray-900 ml-1" fill="currentColor" />
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Video Title */}
+                        <div className="p-4">
+                          <h3 className="text-sm font-semibold text-gray-800 truncate">
+                            {video.title}
+                          </h3>
                         </div>
                       </div>
                     </div>
-
-                    {/* Video Title */}
-                    <div className="p-4">
-                      <h3 className="text-sm font-semibold text-gray-800 truncate">
-                        {video.title}
-                      </h3>
-                    </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
 
             {/* Navigation Arrows */}
             <div className="flex justify-center gap-4 mt-8">
               <button
                 onClick={handlePrevious}
-                className="p-2 text-white hover:bg-white/20 rounded-lg transition-colors"
+                disabled={isTransitioning}
+                className="p-2 text-white hover:bg-white/20 rounded-lg transition-colors disabled:opacity-50"
               >
                 <ChevronLeft className="w-6 h-6" />
               </button>
               <button
                 onClick={handleNext}
-                className="p-2 text-white hover:bg-white/20 rounded-lg transition-colors"
+                disabled={isTransitioning}
+                className="p-2 text-white hover:bg-white/20 rounded-lg transition-colors disabled:opacity-50"
               >
                 <ChevronRight className="w-6 h-6" />
               </button>
@@ -141,7 +182,7 @@ const VideoCarousel = () => {
 
           {/* CTA Button */}
           <div className="text-center mt-12">
-            <button className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+            <button className="bg-white text-blue-800 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
               View Insightful Videos
             </button>
           </div>
