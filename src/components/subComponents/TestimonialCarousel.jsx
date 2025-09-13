@@ -19,7 +19,7 @@ const TestimonialCarousel = ({ reviews }) => {
   return (
     <div className="w-full flex flex-col items-center">
       {/* Carousel Wrapper */}
-      <div className="relative w-[350px] h-[320px] overflow-hidden">
+      <div className="relative w-[350px] h-[320px] overflow-hidden shadow-[0_4px_6px_rgba(0,0,0,0.1)]">
         <div
           className="flex transition-transform duration-500 ease-in-out"
           style={{ transform: `translateX(-${currentIndex * 100}%)` }}

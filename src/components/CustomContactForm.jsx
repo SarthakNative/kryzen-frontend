@@ -89,7 +89,7 @@ const CustomContactForm = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center p-4">
-      <div className="max-w-6xl w-full bg-white overflow-hidden">
+      <div className="max-w-6xl w-full overflow-hidden">
         <div className="flex flex-col lg:flex-row">
           {/* Left Panel - Stats and Testimonial */}
           <div className="lg:w-2/5 bg-[#F0F8FF] p-8">
@@ -114,8 +114,10 @@ const CustomContactForm = () => {
           </div>
 
           {/* Right Panel - Contact Form (unchanged) */}
-          <div className="lg:w-3/5 shadow-lg" >
+         <div className="lg:w-3/5 p-4">
+          <div className="shadow-[0_6px_12px_2px_rgba(0,0,0,0.2)] bg-white">
             {/* Header */}
+
             <div className="bg-[#005D89] text-white p-2 px-4">
               <h2 className="text-lg font-semibold">
                 Questions? Contact us for Sales Enquiry!
@@ -323,6 +325,7 @@ const CustomContactForm = () => {
             <div className="bg-[#005D89] text-white p-2 px-4">
               <h2 className="text-lg font-semibold"></h2>
             </div>
+</div>
           </div>
         </div>
       </div>
