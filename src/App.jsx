@@ -3,9 +3,11 @@ import ClientReviews from './components/ClientReviews'
 import ContactFooter from './components/ContactFooter'
 import ContactSection from './components/ContactSection'
 import CustomContactForm from './components/CustomContactForm'
+import CustomFooter from './components/CustomFooter'
 import DigitalTransformationHero from './components/DigitalTransformationHero'
 import FeaturedIn from './components/FeaturedIn'
 import FloatingCarousel from './components/FloatingCarousel'
+import FloatingContactIcons from './components/FloatingIcons'
 import Header1 from './components/Header1'
 import Header2 from './components/Header2'
 import OurOffices from './components/OurOffices'
@@ -27,6 +29,7 @@ function App() {
   <>
   <Header1/>
   <Header2/>
+  <FloatingContactIcons/>
   <DigitalTransformationHero/>
   <FloatingCarousel/>
   <CustomContactForm/>
@@ -46,6 +49,7 @@ function App() {
   <Services/>
   <AwardsRecognition/>
   <ContactFooter/>
+  <CustomFooter/>
   </>
   )
 }

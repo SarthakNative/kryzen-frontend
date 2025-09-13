@@ -63,7 +63,7 @@ const SuccessMatrix = ({ iconUrls = {} }) => {
   ];
 
   return (
-    <section className="py-8 px-40">
+    <section className="py-8 md:px-40 px-10">
       <div className="max-w-7xl mx-auto">
         <h2 className="text-4xl font-bold text-center mb-6 text-gray-900">
           Success Matrix

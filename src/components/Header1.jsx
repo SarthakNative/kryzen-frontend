@@ -6,7 +6,7 @@ import scheduleIcon from "../assets/images/schedule.png";
 
 const Header1 = () => {
   return (
-    <header className="border-b border-gray-200 bg-[#f0f8ff]">
+   <header className="hidden md:block border-b border-gray-200 bg-[#f0f8ff]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
       

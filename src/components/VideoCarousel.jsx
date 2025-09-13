@@ -88,7 +88,7 @@ const VideoCarousel = () => {
 
   return (
     <>
-      <div className="bg-[#005d89] min-h-screen py-4 px-4 relative overflow-hidden">
+      <div className="bg-[#005d89] py-4 px-4 relative overflow-hidden">
 
         <div className="max-w-7xl mx-auto">
           {/* Header */}
@@ -181,7 +181,7 @@ const VideoCarousel = () => {
           </div>
 
           {/* CTA Button */}
-          <div className="text-center mt-12">
+          <div className="text-center mt-4">
             <button className="bg-white text-blue-800 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
               View Insightful Videos
             </button>

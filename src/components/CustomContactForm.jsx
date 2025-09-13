@@ -88,13 +88,13 @@ const CustomContactForm = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-4">
+    <div className="flex items-center justify-center p-4">
       <div className="max-w-6xl w-full overflow-hidden">
         <div className="flex flex-col lg:flex-row">
           {/* Left Panel - Stats and Testimonial */}
           <div className="lg:w-2/5 bg-[#F0F8FF] p-8">
             {/* Stats Grid */}
-            <div className="grid grid-cols-2 gap-8 mb-12 ml-20">
+            <div className="grid grid-cols-2 gap-8 mb-12 md:ml-20">
               {stats.map((stat, index) => (
                 <div key={index} className="text-left">
                   <div className="text-4xl font-bold text-[#005D89] mb-1">

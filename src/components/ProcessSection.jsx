@@ -67,34 +67,30 @@ const ProcessSection = () => {
       </h1>
       
       <div className="flex justify-center items-center max-w-7xl mx-auto">
-        <div className="flex -space-x-8 relative">
-          {processes.map((process, index) => (
-            <div
-              key={index}
-              className="flex flex-col items-center justify-start px-10 py-12"
-              style={{
-                backgroundColor: process.bgColor,
-                borderRadius: '20%',
-                width: '250px',
-                height: '240px',
-                mixBlendMode: 'multiply',
-                position: 'relative',
-                zIndex: index
-              }}
-            >
-              <h3 className="text-xl font-semibold mb-4 text-gray-800">
-                {process.title}
-              </h3>
-              <ul className="text-center space-y-1">
-                {process.items.map((item, itemIndex) => (
-                  <li key={itemIndex} className="text-sm text-gray-700">
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
+       <div className="flex flex-col md:flex-row md:-space-x-8 space-y-4 md:space-y-0 relative px-4 md:px-0">
+  {processes.map((process, index) => (
+    <div
+      key={index}
+      className="flex flex-col items-center justify-start px-10 py-12 w-full md:w-[250px] h-[240px] rounded-[20%] relative"
+      style={{
+        backgroundColor: process.bgColor,
+        mixBlendMode: 'multiply',
+        zIndex: index
+      }}
+    >
+      <h3 className="text-xl font-semibold mb-4 text-gray-800">
+        {process.title}
+      </h3>
+      <ul className="text-center space-y-1">
+        {process.items.map((item, itemIndex) => (
+          <li key={itemIndex} className="text-sm text-gray-700">
+            {item}
+          </li>
+        ))}
+      </ul>
+    </div>
+  ))}
+</div>
       </div>
     </div>
   );
