@@ -1,6 +1,6 @@
-import { useState } from 'react';
-import { ChevronDownIcon, ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
-import manIconPath from '../assets/images/man.png'
+import { useState, useEffect } from 'react';
+import { ChevronDownIcon } from '@heroicons/react/24/outline';
+import manIconPath from '../assets/images/man.png';
 import TestimonialCarousel from './subComponents/TestimonialCarousel';
 
 const CustomContactForm = () => {
@@ -18,13 +18,37 @@ const CustomContactForm = () => {
   const [currentReview, setCurrentReview] = useState(0);
 
   const stats = [
-    { number: '20+', label: 'Years Experience' },
-    { number: '2800+', label: 'Satisfied Clients' },
-    { number: '1500+', label: 'Completed Projects' },
-    { number: '200+', label: 'IT Professional' },
-    { number: '95%', label: 'Client Retention' },
-    { number: '18+', label: 'Industry Served' }
+    { number: 20, suffix: '+', label: 'Years Experience' },
+    { number: 2800, suffix: '+', label: 'Satisfied Clients' },
+    { number: 1500, suffix: '+', label: 'Completed Projects' },
+    { number: 200, suffix: '+', label: 'IT Professional' },
+    { number: 95, suffix: '%', label: 'Client Retention' },
+    { number: 18, suffix: '+', label: 'Industry Served' }
   ];
+
+   const [counts, setCounts] = useState(stats.map(() => 0));
+
+  useEffect(() => {
+    stats.forEach((stat, i) => {
+      let start = 0;
+      const end = stat.number;
+      const duration = 1500; // ms
+      const stepTime = 16; // ~60fps
+      const increment = end / (duration / stepTime);
+
+      const interval = setInterval(() => {
+        start += increment;
+        if (start < end) {
+          setCounts(prev =>
+            prev.map((val, idx) => (idx === i ? Math.floor(start) : val))
+          );
+        } else {
+          setCounts(prev => prev.map((val, idx) => (idx === i ? end : val)));
+          clearInterval(interval);
+        }
+      }, stepTime);
+    });
+  }, []);
 
   const reviews = [
     {
@@ -70,11 +94,11 @@ const CustomContactForm = () => {
           {/* Left Panel - Stats and Testimonial */}
           <div className="lg:w-2/5 bg-[#F0F8FF] p-8">
             {/* Stats Grid */}
-            <div className="grid grid-cols-2 gap-8 mb-12">
+            <div className="grid grid-cols-2 gap-8 mb-12 ml-20">
               {stats.map((stat, index) => (
                 <div key={index} className="text-left">
-                  <div className="text-3xl font-bold text-[#005D89] mb-1">
-                    {stat.number}
+                  <div className="text-4xl font-bold text-[#005D89] mb-1">
+                    {counts[index]}{stat.suffix}
                   </div>
                   <div className="text-black-700 font-bold text-sm leading-tight">
                     {stat.label}
@@ -86,8 +110,7 @@ const CustomContactForm = () => {
             {/* Divider */}
             <hr className="border-gray-300 mb-8" />
 
-            <TestimonialCarousel reviews={reviews}/>
-
+            <TestimonialCarousel reviews={reviews} />
           </div>
 
           {/* Right Panel - Contact Form (unchanged) */}
@@ -227,7 +250,7 @@ const CustomContactForm = () => {
                 />
               </div>
 
-              {/* File Upload - Modified to be more compact and horizontal */}
+              {/* File Upload */}
               <div className="mb-6">
                 <div className="border-2 border-dashed border-gray-300 rounded-lg p-4">
                   <div className="flex items-center justify-between">
@@ -249,7 +272,7 @@ const CustomContactForm = () => {
                 </div>
               </div>
 
-              {/* Bottom Section - Modified layout */}
+              {/* Bottom Section */}
               <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-6">
                 {/* Newsletter Checkbox */}
                 <div className="mb-4 lg:mb-0">
@@ -296,12 +319,10 @@ const CustomContactForm = () => {
                 </button>
               </div>
             </div>
-          
-          <div className="bg-[#005D89] text-white p-2 px-4">
-              <h2 className="text-lg font-semibold">
-              </h2>
-            </div>
 
+            <div className="bg-[#005D89] text-white p-2 px-4">
+              <h2 className="text-lg font-semibold"></h2>
+            </div>
           </div>
         </div>
       </div>
