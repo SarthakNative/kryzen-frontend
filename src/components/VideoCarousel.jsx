@@ -141,8 +141,8 @@ const VideoCarousel = () => {
                           />
                           
                           {/* Play Button */}
-                          <div className="absolute inset-0 flex items-center justify-center">
-                            <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform">
+                          <div className="absolute inset-0 flex items-end justify-end">
+                            <div className="w-14 h-14 bg-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform">
                               <Play className="w-8 h-8 text-gray-900 ml-1" fill="currentColor" />
                             </div>
                           </div>
