@@ -4,7 +4,7 @@ import gmailIcon from "../assets/images/gmail.png";
 import teamsIcon from "../assets/images/teams.png"; 
 import scheduleIcon from "../assets/images/schedule.png"; 
 
-const Header = () => {
+const Header1 = () => {
   return (
     <header className="border-b border-gray-200 bg-[#f0f8ff]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -43,4 +43,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default Header1;
