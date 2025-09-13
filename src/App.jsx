@@ -1,7 +1,8 @@
+import AwardsRecognition from './components/AwardsRecognition'
 import ClientReviews from './components/ClientReviews'
+import ContactFooter from './components/ContactFooter'
 import ContactSection from './components/ContactSection'
 import CustomContactForm from './components/CustomContactForm'
-import ContactForm from './components/CustomContactForm'
 import DigitalTransformationHero from './components/DigitalTransformationHero'
 import FeaturedIn from './components/FeaturedIn'
 import FloatingCarousel from './components/FloatingCarousel'
@@ -43,6 +44,8 @@ function App() {
   <ClientReviews/>
   <SubscriptionForm/>
   <Services/>
+  <AwardsRecognition/>
+  <ContactFooter/>
   </>
   )
 }
