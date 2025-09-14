@@ -1,5 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight, Play, X } from 'lucide-react';
+import rvp1Path from '../assets/images/rvp1.png'
+import rvp2Path from '../assets/images/rvp2.png'
+import rvp3Path from '../assets/images/rvp3.png'
+import rvp4Path from '../assets/images/rvp4.png'
+import rvp5Path from '../assets/images/rvp5.png'
+import rvp6Path from '../assets/images/rvp6.png'
+import rvp7Path from '../assets/images/rvp7.png'
+import rvp8Path from '../assets/images/rvp8.png'
 
 const VideoCarousel2 = () => {
     const [selectedVideo, setSelectedVideo] = useState(null);
@@ -11,32 +19,50 @@ const VideoCarousel2 = () => {
         {
             id: 'dQw4w9WgXcQ',
             title: 'Leading Real Estate App Development',
-            thumbnail: '/api/placeholder/400/300',
+            thumbnail: rvp1Path,
             description: 'THE ON-DEMAND REAL ESTATE APP'
         },
         {
             id: 'dQw4w9WgXcQ',
             title: 'Leading Home Service App Development',
-            thumbnail: '/api/placeholder/400/300',
+            thumbnail: rvp2Path,
             description: 'Overview - AllySOne is an innovative marketplace...'
         },
         {
             id: 'dQw4w9WgXcQ',
             title: 'Leading Stress Management App',
-            thumbnail: '/api/placeholder/400/300',
+            thumbnail: rvp3Path,
             description: 'STRESS RELIEF'
         },
         {
             id: 'dQw4w9WgXcQ',
             title: 'Leading Trading App Development',
-            thumbnail: '/api/placeholder/400/300',
+            thumbnail: rvp4Path,
             description: 'AITradeX - Digital Financial Markets'
         },
         {
             id: 'dQw4w9WgXcQ',
             title: 'Another App Development',
-            thumbnail: '/api/placeholder/400/300',
-            description: 'Additional content'
+            thumbnail: rvp5Path,
+            description: 'Good service'
+        },
+         {
+            id: 'dQw4w9WgXcQ',
+            title: 'Another App Development',
+            thumbnail: rvp6Path,
+            description: 'Best apps'
+        },
+         {
+            id: 'dQw4w9WgXcQ',
+            title: 'Another App Development',
+            thumbnail: rvp7Path,
+            description: 'Satisfied'
+        },
+         {
+            id: 'dQw4w9WgXcQ',
+            title: 'Another App Development',
+            thumbnail: rvp8Path,
+            description: 'very good work'
         }
     ];
 
@@ -127,15 +153,10 @@ const VideoCarousel2 = () => {
                                             onClick={() => setSelectedVideo(video)}
                                         >
                                             <div className="relative bg-white rounded-lg overflow-hidden shadow-xl">
-                                                {/* Sapphire Logo */}
-                                                <div className="absolute top-2 right-2 z-10 bg-black/50 px-2 py-1 rounded">
-                                                    <span className="text-white text-xs font-bold">Sapphire</span>
-                                                </div>
-
                                                 {/* Video Thumbnail */}
                                                 <div className="relative aspect-video bg-gray-900">
                                                     <img
-                                                        src={`https://img.youtube.com/vi/${video.id}/maxresdefault.jpg`}
+                                                        src={video.thumbnail}
                                                         alt={video.title}
                                                         className="w-full h-full object-cover"
                                                     />
@@ -147,7 +168,7 @@ const VideoCarousel2 = () => {
                                                 {/* Video Title */}
                                                 <div className="p-4  flex items-center justify-between">
                                                     <h3 className="text-sm font-semibold text-gray-800 truncate">
-                                                        {video.title}
+                                                        {video.description}
                                                     </h3>
                                                     <button
                                                         onClick={() => setSelectedVideo(video)}
