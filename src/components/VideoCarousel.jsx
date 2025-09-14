@@ -6,37 +6,55 @@ const VideoCarousel = () => {
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [translateX, setTranslateX] = useState(0);
 
-  // Replace these with actual YouTube video IDs
+  // Your YouTube videos with extracted IDs
   const initialVideos = [
     {
-      id: 'dQw4w9WgXcQ',
-      title: 'Leading Real Estate App Development',
-      thumbnail: '/api/placeholder/400/300',
-      description: 'THE ON-DEMAND REAL ESTATE APP'
+      id: 'KU2vJjqdDfM',
+      title: 'Chef boking app',
+      thumbnail: 'https://img.youtube.com/vi/KU2vJjqdDfM/maxresdefault.jpg',
+      description: 'Professional video content'
     },
     {
-      id: 'dQw4w9WgXcQ',
-      title: 'Leading Home Service App Development',
-      thumbnail: '/api/placeholder/400/300',
-      description: 'Overview - AllySOne is an innovative marketplace...'
+      id: 'C3jTd2hvnYg',
+      title: 'AI video app', 
+      thumbnail: 'https://img.youtube.com/vi/C3jTd2hvnYg/maxresdefault.jpg',
+      description: 'Professional video content'
     },
     {
-      id: 'dQw4w9WgXcQ',
-      title: 'Leading Stress Management App',
-      thumbnail: '/api/placeholder/400/300',
-      description: 'STRESS RELIEF'
+      id: 'AiZ_9q1SiNI',
+      title:'Afia app',
+      thumbnail: 'https://img.youtube.com/vi/AiZ_9q1SiNI/maxresdefault.jpg',
+      description: 'Professional video content'
     },
     {
-      id: 'dQw4w9WgXcQ',
-      title: 'Leading Trading App Development',
-      thumbnail: '/api/placeholder/400/300',
-      description: 'AITradeX - Digital Financial Markets'
+      id: 'xVT9GmTpWOY',
+      title: 'AI fraud detection system',
+      thumbnail: 'https://img.youtube.com/vi/xVT9GmTpWOY/maxresdefault.jpg',
+      description: 'Professional video content'
     },
     {
-      id: 'dQw4w9WgXcQ',
-      title: 'Another App Development',
-      thumbnail: '/api/placeholder/400/300',
-      description: 'Additional content'
+      id: 'mbfjqi8wXUM',
+      title: 'SAAS transformaing business models',
+      thumbnail: 'https://img.youtube.com/vi/mbfjqi8wXUM/maxresdefault.jpg',
+      description: 'Professional video content'
+    },
+    {
+      id: 'yyYIMfYuly4',
+      title: 'Microservices as architecture',
+      thumbnail: 'https://img.youtube.com/vi/yyYIMfYuly4/maxresdefault.jpg',
+      description: 'Professional video content'
+    },
+    {
+      id: '7VbP3FlFc2I',
+      title: "Qunatum computing",
+      thumbnail: 'https://img.youtube.com/vi/7VbP3FlFc2I/maxresdefault.jpg',
+      description: 'Professional video content'
+    },
+    {
+      id: 'LNQ4xFYNibU',
+      title: "Single page web development",
+      thumbnail: 'https://img.youtube.com/vi/LNQ4xFYNibU/maxresdefault.jpg',
+      description: 'Professional video content'
     }
   ];
 
@@ -138,10 +156,14 @@ const VideoCarousel = () => {
                             src={`https://img.youtube.com/vi/${video.id}/maxresdefault.jpg`}
                             alt={video.title}
                             className="w-full h-full object-cover"
+                            onError={(e) => {
+                              // Fallback to high quality thumbnail if maxresdefault doesn't exist
+                              e.target.src = `https://img.youtube.com/vi/${video.id}/hqdefault.jpg`;
+                            }}
                           />
                           
                           {/* Play Button */}
-                          <div className="absolute inset-0 flex items-end justify-end">
+                          <div className="absolute inset-0 flex items-center justify-center">
                             <div className="w-14 h-14 bg-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform">
                               <Play className="w-8 h-8 text-gray-900 ml-1" fill="currentColor" />
                             </div>
