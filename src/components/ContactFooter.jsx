@@ -106,13 +106,14 @@ const ContactFooter = () => {
     }
   ];
 
-  const socialLinks = [
-    { icon: "f", bgColor: "bg-blue-600" },
-    { icon: "𝕏", bgColor: "bg-black" },
-    { icon: "in", bgColor: "bg-blue-700" },
-    { icon: "📷", bgColor: "bg-gradient-to-r from-purple-500 to-pink-500" },
-    { icon: "▶", bgColor: "bg-red-600" }
-  ];
+const socialLinks = [
+  { icon: "f" },
+  { icon: "𝕏" },
+  { icon: "in" },
+  { icon: "📷" },
+  { icon: "▶" }
+];
+
 
   return (
     <div className="bg-gradient-to-br from-blue-50 to-blue-100 p-4">
@@ -134,7 +135,7 @@ const ContactFooter = () => {
             {/* Row 2: Two Contact Cards */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {/* Contact For Sales */}
-              <div className="bg-white rounded-lg p-4 sm:p-6">
+              <div className="bg-white rounded-lg border border-blue-300  p-4 sm:p-6">
                 <h3 className="text-lg sm:text-xl font-bold text-blue-600 mb-3 sm:mb-4">Contact For Sales</h3>
                 <div className="space-y-2">
                   <div className="flex items-start space-x-2">
@@ -154,7 +155,7 @@ const ContactFooter = () => {
               </div>
 
               {/* Contact for Career */}
-              <div className="bg-white rounded-lg p-4 sm:p-6">
+              <div className="bg-white rounded-lg border border-blue-300 p-4 sm:p-6">
                 <h3 className="text-lg sm:text-xl font-bold text-blue-600 mb-3 sm:mb-4">Contact for Career (Jobs)</h3>
                 <div className="space-y-2">
                   <div className="flex items-start space-x-2">
@@ -172,7 +173,7 @@ const ContactFooter = () => {
             {/* Row 3: Featured Posts (Review Cards) */}
             <div className="grid grid-cols-3 gap-2 sm:gap-4">
               {featuredPosts.map((post, index) => (
-                <div key={index} className="bg-white rounded-lg p-2 sm:p-3">
+                <div key={index} className="bg-white border border-blue-300  rounded-lg p-2 sm:p-3">
                   <img
                     src={post.image}
                     alt={post.platform}
@@ -197,7 +198,8 @@ const ContactFooter = () => {
                   {socialLinks.map((social, index) => (
                     <div
                       key={index}
-                      className={`w-8 h-8 sm:w-10 sm:h-10 rounded-full ${social.bgColor} text-white flex items-center justify-center cursor-pointer hover:opacity-80 transition`}
+                     className="w-10 h-10 flex items-center justify-center rounded-full text-white font-bold 
+                 bg-gradient-to-b from-sky-700 to-sky-300 shadow-md"
                     >
                       {social.icon}
                     </div>
@@ -212,7 +214,7 @@ const ContactFooter = () => {
             {locations.map((location, index) => (
               <div
                 key={index}
-                className="bg-white rounded-lg p-4 w-full max-w-full overflow-hidden"
+                className="bg-white rounded-lg border border-blue-300  p-4 w-full max-w-full overflow-hidden"
               >
                 {/* Row 1: Flag and Country Name */}
                 <div className="flex items-center space-x-2 mb-3 pb-2">
