@@ -1,20 +1,26 @@
 import companyLogoPath from '../assets/images/sapphire_logo.png'
-import indiaFlagPath from '../assets/images/india_map.png'
-import usaFlagPath from '../assets/images/usa_map.png'
-import uaeFlagPath from '../assets/images/uae_map.png'
-import ukFlagPath from '../assets/images/uk_map.png'
-import canadaFlagPath from '../assets/images/canada_map.png'
-import autraliaFlagPath from '../assets/images/australia_map.png'
+import indiaMonumentPath from '../assets/images/india_monument.png'
+import usaMonumentPath from '../assets/images/usa_monument.png'
+import uaeMonumentPath from '../assets/images/uae_monument.png'
+import ukMonumentPath from '../assets/images/uk_monument.png'
+import canadaMonumentPath from '../assets/images/canada_monument.png'
+import autraliaMonumentPath from '../assets/images/australia_monument.png'
 import googleReviewPath from '../assets/images/google_review.png'
 import goodFirmsReviewPath from '../assets/images/goodfirms_review.png'
 import clutchReviewPath from '../assets/images/clutch_review.png'
+import usaFlagPath from '../assets/images/usa.png'
+import indiaFlagPath from '../assets/images/india.png'
+import ukFlagPath from '../assets/images/uk.png'
+import uaeFlagPath from '../assets/images/uae.png'
+import canadaFlagPath from '../assets/images/canada.png'
+import australiaFlagPath from '../assets/images/australia.png'
 
 
 const ContactFooter = () => {
   const locations = [
     {
       country: "India(HQ)",
-      flag: "🇮🇳",
+      flag: indiaFlagPath,
       address: [
         "C/102-103, Ganesh",
         "Meridian, Opp. Kargil",
@@ -22,60 +28,60 @@ const ContactFooter = () => {
         "Ahmedabad - 380060,",
         "Gujarat, INDIA"
       ],
-      image: indiaFlagPath // Replace with actual image URL
+      image: indiaMonumentPath // Replace with actual image URL
     },
     {
       country: "USA",
-      flag: "🇺🇸",
+      flag: usaFlagPath,
       address: [
         "5004 NW 116th",
         "Ave Coral",
         "Springs, Florida,",
         "FL 33076"
       ],
-      image: usaFlagPath
+      image: usaMonumentPath
     },
     {
       country: "Canada",
-      flag: "🇨🇦",
+      flag: canadaFlagPath,
       address: [
         "111 Tarawood lane NE,",
         "unit#403 Calgary AB,",
         "T3J 0G8"
       ],
-      image: canadaFlagPath
+      image: canadaMonumentPath
     },
     {
       country: "Australia",
-      flag: "🇦🇺",
+      flag: australiaFlagPath,
       address: [
         "U 2B 305 Harborne",
         "Street, Glendalough",
         "6016 WA"
       ],
-      image: autraliaFlagPath
+      image: autraliaMonumentPath
     },
     {
       country: "UK",
-      flag: "🇬🇧",
+      flag: ukFlagPath,
       address: [
         "42",
         "Audley Avenue,",
         "Gillingham,ME73AY",
         "United Kingdom"
       ],
-      image: ukFlagPath
+      image: ukMonumentPath
     },
     {
       country: "UAE",
-      flag: "🇦🇪",
+      flag: uaeFlagPath,
       address: [
         "A-21, Building 21,",
         "Ghoroob,Mirdif",
         "Dubai, United",
         "Arab Emirates"
       ],
-      image: uaeFlagPath
+      image: uaeMonumentPath
     }
   ];
 
@@ -128,7 +134,7 @@ const ContactFooter = () => {
             {/* Row 2: Two Contact Cards */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {/* Contact For Sales */}
-              <div className="bg-white rounded-lg shadow-lg p-4 sm:p-6">
+              <div className="bg-white rounded-lg p-4 sm:p-6">
                 <h3 className="text-lg sm:text-xl font-bold text-blue-600 mb-3 sm:mb-4">Contact For Sales</h3>
                 <div className="space-y-2">
                   <div className="flex items-start space-x-2">
@@ -148,7 +154,7 @@ const ContactFooter = () => {
               </div>
 
               {/* Contact for Career */}
-              <div className="bg-white rounded-lg shadow-lg p-4 sm:p-6">
+              <div className="bg-white rounded-lg p-4 sm:p-6">
                 <h3 className="text-lg sm:text-xl font-bold text-blue-600 mb-3 sm:mb-4">Contact for Career (Jobs)</h3>
                 <div className="space-y-2">
                   <div className="flex items-start space-x-2">
@@ -166,7 +172,7 @@ const ContactFooter = () => {
             {/* Row 3: Featured Posts (Review Cards) */}
             <div className="grid grid-cols-3 gap-2 sm:gap-4">
               {featuredPosts.map((post, index) => (
-                <div key={index} className="bg-white rounded-lg shadow-lg p-2 sm:p-3">
+                <div key={index} className="bg-white rounded-lg p-2 sm:p-3">
                   <img
                     src={post.image}
                     alt={post.platform}
@@ -206,11 +212,11 @@ const ContactFooter = () => {
             {locations.map((location, index) => (
               <div
                 key={index}
-                className="bg-white rounded-lg shadow-lg p-4 w-full max-w-full overflow-hidden"
+                className="bg-white rounded-lg p-4 w-full max-w-full overflow-hidden"
               >
                 {/* Row 1: Flag and Country Name */}
-                <div className="flex items-center space-x-2 mb-3 pb-2 border-b">
-                  <span className="text-2xl">{location.flag}</span>
+                <div className="flex items-center space-x-2 mb-3 pb-2">
+                  <img src={location.flag} className='w-8'/>
                   <h3 className="text-lg font-bold">{location.country}</h3>
                 </div>
 
