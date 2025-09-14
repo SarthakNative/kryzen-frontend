@@ -82,29 +82,29 @@ const FloatingContactIcons = () => {
             transform: rotate(0deg) scale(1);
           }
           25% { 
-            transform: rotate(-5deg) scale(1.1);
+            transform: rotate(-15deg) scale(1.1);
           }
           50% { 
-            transform: rotate(5deg) scale(1.1);
+            transform: rotate(15deg) scale(1.1);
           }
           75% { 
-            transform: rotate(-3deg) scale(1.05);
+            transform: rotate(-13deg) scale(1.05);
           }
         }
         
         .animate-surprise {
-          animation: surprise 2s ease-in-out infinite;
+          animation: surprise 0.5s ease-in-out infinite;
           transform-origin: center center;
         }
         
         .animate-surprise-delayed {
-          animation: surprise 2s ease-in-out infinite;
+          animation: surprise 0.5s ease-in-out infinite;
           animation-delay: 0.5s;
           transform-origin: center center;
         }
         
         .animate-surprise-delayed-2 {
-          animation: surprise 2s ease-in-out infinite;
+          animation: surprise 0.5s ease-in-out infinite;
           animation-delay: 1s;
           transform-origin: center center;
         }
